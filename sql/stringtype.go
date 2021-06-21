@@ -268,11 +268,7 @@ func (t stringType) Convert(v interface{}) (interface{}, error) {
 		}
 		val = s.Decimal.String()
 	case JSONDocument:
-		if s.Val == nil {
-			return "", nil
-		}
-
-		return s.ToString(nil)
+		return t.Convert(s.Val)
 	default:
 		return nil, ErrConvertToSQL.New(t)
 	}

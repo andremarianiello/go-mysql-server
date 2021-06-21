@@ -52,6 +52,7 @@ func TestStringCompare(t *testing.T) {
 		{MustCreateStringWithDefaults(sqltypes.VarChar, 10), "0xed54321", "0x12345de", 1},
 		{MustCreateStringWithDefaults(sqltypes.VarChar, 10), []byte("254"), 254, 0},
 		{MustCreateStringWithDefaults(sqltypes.VarChar, 10), []byte("254"), 254.5, -1},
+		{MustCreateStringWithDefaults(sqltypes.VarChar, 10), JSONDocument{"hello"}, "hello", 0},
 
 		// Sanity checks that behavior is consistent
 		{MustCreateBinary(sqltypes.Binary, 10), 0, 1, -1},
